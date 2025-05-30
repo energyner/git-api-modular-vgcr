@@ -1,0 +1,20 @@
+# Node
+node_modules/
+npm-debug.log
+package-lock.json
+
+# Entorno y producción
+#.env
+dist/
+build/
+Dockerfile.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Scripts auxiliares
+*.bat
+*.sh
+
+

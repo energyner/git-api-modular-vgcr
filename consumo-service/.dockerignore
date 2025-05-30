@@ -1,0 +1,28 @@
+# Ignorar dependencias locales
+node_modules/
+npm-debug.log*
+package-lock.json
+
+# Ignorar control de versiones
+.git/
+.gitignore
+
+# Archivos de entorno sensibles
+.env*
+*.env
+
+# Ignorar configuraciones de IDE
+.DS_Store
+.idea/
+.vscode/
+
+# Build / testing / logs
+dist/
+build/
+coverage/
+logs/
+*.log
+
+# Ignorar Dockerfiles si no se usan todos
+Dockerfile
+.dockerignore

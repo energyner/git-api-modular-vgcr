@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  consumo-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: consumo-service
+    ports:
+      - "3006:3006"
+    restart: unless-stopped

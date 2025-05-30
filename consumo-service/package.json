@@ -1,0 +1,22 @@
+{
+  "name": "consumo-service",
+  "version": "1.0.0",
+  "description": "Microservicio para calcular el consumo energético",
+  "type": "module",
+  "main": "consumo-server.mjs",
+  "scripts": {
+    "start": "node consumo-server.mjs"
+  },
+  "keywords": [
+    "microservicio",
+    "consumo",
+    "energia",
+    "nodejs"
+  ],
+  "author": "TuNombre o tu Organización",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  }
+}

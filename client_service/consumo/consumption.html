@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>  API Consumo Energético </title>
+     <!--Aplicando estilo a una estructura responsivo de tres columnas -->
+ <link rel="stylesheet" href="./style-consumption.css" type="text/css"  >
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+<header>
+    <h3> APIs Calculador Consumo Energéticos - APIs </h3>  
+   <p>Los scripts y ejercicios se encuentran en el Libro 5 -
+    Programando Paso a Paso y Más a la venta en Amazon.</p>
+</header>
+<!--2 Divisiones responsives-->
+<div class="wrapper"> 
+    <div class="column"> <!-- Primera división -->
+        <h3 class="subcapitulo1">API Consumo Energetico</h3>
+
+<p><b> API Consumo Energetico</b></p>
+<!--API Consumo Energetico-->
+<form id="consumo-form">
+    <label for="potencia">Potencia:kW</label>
+    <input type="number" id="potencia" name="potencia" placeholder="potencia" required>
+    <label for="horas">Horas:h</label>
+    <input type="number" id="horas" name="horas" placeholder="horas" required>
+    <button type="submit">Calcular</button>
+</form>
+
+<h4> Resultado Consumo Energético, kW/h:</h4>
+<p id="resultadoConsumo"></p>
+
+</div>
+
+    <div class="column"> <!-- Segunda división -->
+        <h3 class="subcapitulo1"> Calculador Consumo-Energético. <br>
+                Facilitando la Gestión Eficiente de la Energía </h3>
+        <p><b>Descripción </b></p>
+        <p>La API Consumo-Energético es una herramienta diseñada para calcular 
+          el consumo de energía en función de la potencia utilizada por el equipo y el 
+            tiempo de operación. Al ingresar parámetros clave como la potencia en kilovatios y 
+            las horas de uso, esta API ofrece resultados inmediatos que permiten a individuos, 
+            empresas e instituciones evaluar su gasto energético y optimizar el uso de recursos.</p>
+        <p><b>Utilidad</b></p> 
+        <p>Esta API proporciona cálculos rápidos y confiables sobre el consumo energético, 
+            permitiendo a los usuarios tomar decisiones oportunas para reducir costos y mejorar 
+            la eficiencia energética. Su integración con sistemas de gestión permite analizar 
+            patrones de consumo, identificar áreas de optimización y desarrollar
+             estrategias sostenibles para minimizar el impacto ambiental.  </p>
+        <p><b>Beneficios </b></p>
+        <p>El acceso a datos precisos sobre el consumo energético fomenta prácticas responsables 
+            y contribuye a la reducción del desperdicio de energía. La API Consumo-Energético 
+            ayuda a los usuarios a detectar oportunidades para mejorar la eficiencia, 
+            reducir costos operativos y adoptar medidas proactivas en la gestión de recursos. 
+            Además, su uso en hogares, negocios e industrias permite una mejor planificación 
+            del consumo eléctrico, favoreciendo una transición hacia fuentes de energía más sostenibles.  </p>
+            <p><b><i>a) Impacto Global</i></b></p>
+            <p>La implementación de esta API a nivel mundial puede transformar la manera 
+                en que la energía es utilizada y administrada. Facilita la adopción de estrategias 
+                eficientes en sectores clave como la industria, el transporte y el desarrollo urbano, 
+                contribuyendo directamente a la reducción de la demanda energética y de las emisiones de carbono. Al proporcionar información accesible sobre consumo eléctrico, ayuda a gobiernos y organizaciones a implementar políticas de 
+                ahorro energético y promover el uso de energías renovables.  </p>
+            <p><b><i>b) Beneficios para la Comunidad Local</i></b></p>
+            <p>A nivel local, esta API permite a familias y empresas a comprender mejor 
+                su consumo eléctrico y tomar medidas para optimizarlo. Ayuda a reducir sus facturas 
+                de electricidad mediante una gestión eficiente de los dispositivos eléctricos y permite 
+                a pequeñas empresas mejorar su rentabilidad al minimizar costos innecesarios. También fomenta la educación energética dentro de las comunidades, generando conciencia sobre el impacto del consumo eléctrico en el medio ambiente 
+                y la importancia de adoptar hábitos más sostenibles.  </p>
+
+        <p><b>Conclusión</b></p>
+        <p></p>
+        <p><b>¡Invitación a Colaboradores!</b></p>
+       <p>Para ampliar el alcance y funcionalidad de la API Consumo-Energético, en su versión 
+        básica, invitamos a desarrolladores, expertos en eficiencia energética y profesionales 
+        de datos a contribuir con mejoras que optimicen su rendimiento. A través de la 
+        incorporación de nuevas características, como análisis predictivos, 
+        evaluación de inversiones, compatibilidad con sensores inteligentes o integración 
+        con redes eléctricas inteligentes, podemos hacer que esta herramienta sea aún más poderosa. 
+        Todas las mejoras ayudarán a fortalecer el impacto en la gestión del consumo energético 
+        a nivel global.  </p> 
+ </div>
+
+</div>
+<footer>
+    <p>© 2025  Plantilla - APIs. (Cálculos Técnicos)</p>
+</footer>
+
+<script type="module" src="./nav-consumption.mjs"></script>
+
+</body>
+</html>
