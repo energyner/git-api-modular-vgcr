@@ -11,11 +11,11 @@ document.getElementById('consumo-form').addEventListener('submit', (event) => {
     const isLocalDesktop = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
     // 2. IP real de tu PC en red Wi-Fi local (ajústala si cambia)
-    const SERVER_PC_IP = 'http://192.168.0.252:3006'; // ← cámbiala por tu IP real
+    const SERVER_PC_IP = 'https://192.168.0.252:3006'; // ← cámbiala por tu IP real
 
     // 3. Construir URL final
     const API_CONSUMO = isLocalDesktop
-        ? 'http://localhost:3006/api/consumo-energetico'
+        ? 'https://localhost:3006/api/consumo-energetico'
         : isMobile
             ? `${SERVER_PC_IP}/api/consumo-energetico`
             : '/api/consumo'; // producción
