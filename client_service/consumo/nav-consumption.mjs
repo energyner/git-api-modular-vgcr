@@ -1,4 +1,5 @@
 // nav-consumption.mjs
+// Modificando elscript para detectar el entorno en multiples entornos y dispositivos.
 
 document.getElementById('consumo-form').addEventListener('submit', (event) => {
     event.preventDefault();
@@ -6,19 +7,20 @@ document.getElementById('consumo-form').addEventListener('submit', (event) => {
     const potencia = document.getElementById('potencia').value;
     const horas = document.getElementById('horas').value;
 
-    // 1. Detectar tipo de entorno y dispositivo
+    // 1. Detectar tipo de entorno
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     const isLocalDesktop = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    const isLAN = /^192\.168\./.test(window.location.hostname);
 
     // 2. IP real de tu PC en red Wi-Fi local (ajústala si cambia)
-    const SERVER_PC_IP = 'https://192.168.0.252:3006'; // ← cámbiala por tu IP real
+    const SERVER_PC_IP = 'http://192.168.0.252:3006'; // ← IP local, usa HTTP
 
     // 3. Construir URL final
     const API_CONSUMO = isLocalDesktop
-        ? 'https://localhost:3006/api/consumo-energetico'
-        : isMobile
+        ? 'http://localhost:3006/api/consumo-energetico'
+        : isLAN || isMobile
             ? `${SERVER_PC_IP}/api/consumo-energetico`
-            : '/api/consumo'; // producción
+            : 'https://consumo-service-858388184339.us-east1.run.app/api/consumo-energetico'; // ← producción
 
     // 4. Ejecutar solicitud
     fetch(API_CONSUMO, {
