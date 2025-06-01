@@ -1,11 +1,11 @@
 {
-  "name": "consumo-service",
+  "name": "footprint-service",
   "version": "1.0.0",
   "description": "Microservicio para calcular el consumo energético",
   "type": "module",
-  "main": "consumo-server.mjs",
+  "main": "footprint-server.mjs",
   "scripts": {
-    "start": "node consumo-server.mjs"
+    "start": "node footprint-server.mjs"
   },
   "keywords": [
     "microservicio",

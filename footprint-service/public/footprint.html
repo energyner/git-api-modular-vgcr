@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 5 - Programando API </title>
+     <!--Aplicando estilo a una estructura responsivo de tres columnas -->
+ <link rel="stylesheet" href="style-footprint.css" type="text/css"  >
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+<header>
+    <h3> Class 5. Quinta Parte - APIs </h3>  
+   <p>Los scripts y ejercicios se encuentran en el Libro 5 
+    Quinta Parte, Programando Paso a Paso y Más a la venta en Amazon.</p>
+</header>
+<!--3 Divisiones responsives-->
+<div class="wrapper"> 
+    <div class="column"> <!-- Primera división -->
+      <h3 class="subcapitulo1"> Calculador Huella de Carbono</h3>
+        <p><b>2.7.1.3 - 1 API Huella de Carbono</b></p>
+        <!--API Huella de Carbono-->
+        <form id="formulario">
+            <label>Estado:</label>
+            <select id="state">
+            <option value="Select your State">Select your State</option>
+            <option value="AL">Alabama</option>
+            <option value="AK">Alaska</option>
+            <option value="AZ">Arizona</option>
+            <option value="AR">Arkansas</option>
+            <option value="CA">California</option>
+            <option value="CO">Colorado</option>
+            <option value="CT">Connecticut</option>
+            <option value="DE">Delaware</option>
+            <option value="FL">Florida</option>
+            <option value="GA">Georgia</option>
+            <option value="HI">Hawaii</option>
+            <option value="ID">Idaho</option>
+            <option value="IL">Illinois</option>
+            <option value="IN">Indiana</option>
+            <option value="IA">Iowa</option>
+            <option value="KS">Kansas</option>
+            <option value="KY">Kentucky</option>
+            <option value="LA">Louisiana</option>
+            <option value="ME">Maine</option>
+            <option value="MD">Maryland</option>
+            <option value="MA">Massachusetts</option>
+            <option value="MI">Michigan</option>
+            <option value="MN">Minnesota</option>
+            <option value="MS">Mississippi</option>
+            <option value="MO">Missouri</option>
+            <option value="MT">Montana</option>
+            <option value="NE">Nebraska</option>
+            <option value="NV">Nevada</option>
+            <option value="NH">New Hampshire</option>
+            <option value="NJ">New Jersey</option>
+            <option value="NM">New Mexico</option>
+            <option value="NY">New York</option>
+            <option value="NC">North Carolina</option>
+            <option value="ND">North Dakota</option>
+            <option value="OH">Ohio</option>
+            <option value="OK">Oklahoma</option>
+            <option value="OR">Oregon</option>
+            <option value="PA">Pennsylvania</option>
+            <option value="RI">Rhode Island</option>
+            <option value="SC">South Carolina</option>
+            <option value="SD">South Dakota</option>
+            <option value="TN">Tennessee</option>
+            <option value="TX">Texas</option>
+            <option value="UT">Utah</option>
+            <option value="VT">Vermont</option>
+            <option value="VA">Virginia</option>
+            <option value="WA">Washington</option>
+            <option value="WV">West Virginia</option>
+            <option value="WI">Wisconsin</option>
+            <option value="WY">Wyoming</option>
+
+            </select>
+            <label>Electricidad (kWh):</label>
+            <input type="number" id="elect" placeholder="kWh">
+            <label>Gas (galones):</label>
+            <input type="number" id="gas" placeholder="galones">
+            <label>Agua (pies cúbicos):</label>
+            <input type="number" id="water" placeholder="pies cúbicos">
+            <label>LPG (galones):</label>
+            <input type="number" id="lpg" placeholder="galones">
+            <label>Gas Natural (pies cúbicos):</label>
+            <input type="number" id="gn" placeholder="pies cúbicos">
+            <label>Distancia de vuelo (millas):</label>
+            <input type="number" id="fly" placeholder="millas">
+            <label>Costos operativos (USD):</label>
+            <input type="number" id="cogs" placeholder="USD">
+            <label>Número de personas:</label>
+            <input type="number" id="person" placeholder="Numero">
+            <p>Realiza el calculo</p>
+            <button id="calcular">Calcular</button>
+        </form>
+        
+        <div >
+            <label>Resultado Total:lb_CO2</label>
+            <input id="resultado" readonly>
+            <label>Estado:</label>
+            <input id="estado" readonly>
+            <label>Huella Per Cápita:lb_CO2/u</label>
+            <input id="percapita" readonly>
+            <label>Huella/pc Estado:lb_CO2/u</label>
+            <input id="per_capita_estado" readonly>
+            <label>Promedio/pc USA:lb_CO2/u</label>
+            <input id="promedioUSA" readonly>
+            <label>Promedio/pc Mundo:lb_CO2/u</label>
+            <input id="promedioMundial" readonly>
+            <label>Porciento/pc Estado:</label>
+            <input id="porcentajeEstado" readonly>
+            <label>Porciento/pc USA:</label>
+            <input id="porcentajeUSA" readonly>
+            <label>Porciento/pc Mundo:</label>
+            <input id="porcentajeMundial" readonly>
+
+
+        </div>
+    
+    </div>
+
+    <div class="column"> <!-- Segunda división -->
+     <h3 class="subcapitulo1"> Contribuyendo a un Futuro Sostenible </h3>    
+    <p><b>Descripción</b></p>
+    <p>La API Huella de Carbono es una herramienta avanzada que permite calcular 
+        con facilidad el impacto ambiental generado por el consumo de energía y 
+        recursos naturales dentro de un núcleo familiar. Mediante un análisis 
+        detallado de factores como electricidad, gas, agua, transporte y costos operativos, 
+        esta API ofrece a individuos y organizaciones la posibilidad de medir 
+        us emisiones de CO₂ en función de sus hábitos de consumo. 
+        Además, facilita la comparación de su huella de carbono con promedios 
+        locales y globales, brindando una visión clara sobre su impacto en el 
+        medio ambiente y promoviendo la adopción de prácticas más sostenibles.</p>
+
+        <p><b>Utilidad</b></p>
+        <p>Esta API ofrece un cálculo rápido, preciso y detallado de la huella de carbono, 
+        permitiendo a las personas comprometidas con la sostenibilidad tomar decisiones 
+        certadas y adoptar prácticas más responsables. Más que una herramienta de medición 
+        impulsa la conciencia ambiental al demostrar cómo cada individuo y su familia 
+        contribuye a la generación de emisiones según sus hábitos de consumo. 
+        Su integración con sistemas de gestión ambiental y proyectos ecológicos, 
+        tanto locales como globales, facilita la optimización del uso de energía, 
+        la reducción de emisiones y el avance hacia una mayor eficiencia energética a nivel mundial.</p>
+
+    <p><b>Beneficios</b></p>
+    <p>Al utilizar la API, los usuarios pueden evaluar, comparar y mejorar 
+        us hábitos de consumo energético. Esto fomenta la adopción de tecnologías limpias, 
+        impulsa la educación ambiental y promueve un estilo de vida más sostenible. 
+        Además, ofrece información clave para que empresas y gobiernos 
+        establezcan políticas de reducción de emisiones.</p>
+     <p><b><i>a) Impacto Global</i></b></p>
+     <p>El calculador Huella de Carbono contribuye significativamente a la lucha 
+        contra el cambio climático. Permite a países y organizaciones medir su impacto 
+        y establecer estrategias para reducir emisiones, promoviendo el uso de energías 
+        renovables y tecnologías limpias. También facilita la colaboración entre 
+        entidades internacionales en el desarrollo de soluciones sustentables.</p>
+    <p><b><i>b) Beneficios para la Comunidad Local</i></b></p>
+    <p>A nivel local, esta API ayuda a hogares y negocios a comprender su impacto ambiental 
+        y adoptar prácticas más responsables. Brinda datos accesibles que pueden impulsar 
+        cambios en el consumo energético, influir en regulaciones ecológicas y apoyar 
+        iniciativas comunitarias enfocadas en la reducción de la huella de carbono.</p>
+
+       <p><b>Conclusión</b></p>
+       <p>El calculador Huella de Carbono es una herramienta clave para la 
+        transformación sostenible. Su implementación en distintos sectores 
+        facilita la reducción de emisiones y mejora 
+        la calidad del medio ambiente a nivel global y local. </p>
+
+        <p><b>¡Invitación a Colaboradores!</b></p>
+        <p>Para mejorar la funcionalidad de la API, invitamos a desarrolladores, 
+            científicos de datos y expertos en sostenibilidad a contribuir con su 
+            conocimiento y experiencia. A través de la incorporación de nuevas características, 
+            algoritmos más avanzados y optimización del cálculo de emisiones, 
+            podemos potenciar aún más el impacto de esta herramienta. </p>
+
+
+    
+    </div>
+    
+</div>
+
+
+</div>
+<footer>
+    <p>© 2025  APIs. (Cálculos Técnicos)</p>
+</footer>
+
+
+<script type="module" src="./nav-footprint.mjs"></script>
+
+</body>
+</html>
