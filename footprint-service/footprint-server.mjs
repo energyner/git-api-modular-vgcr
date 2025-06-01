@@ -11,7 +11,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = process.env.PORT || 3008;
+const PORT = process.env.PORT || 8080;  // Cloud Run usa 8080 por defecto
 
 // Middleware
 app.use(cors());
