@@ -11,7 +11,7 @@ RUN npm install --only=production
 COPY . .    
 
 # Expone el puerto que Cloud Run usará
-EXPOSE 3008
+EXPOSE 8080
 
 # Comando para iniciar el microservicio
 CMD ["node", "footprint-server.mjs"]
