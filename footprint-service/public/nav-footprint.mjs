@@ -1,3 +1,5 @@
+// nav-footprint.mjs
+
 document.getElementById("calcular").addEventListener("click", async function (event) {
     event.preventDefault();
 
@@ -18,17 +20,17 @@ document.getElementById("calcular").addEventListener("click", async function (ev
     // URL de tu API 'footprint-service' desplegada en Google Cloud Run
     // ¡IMPORTANTE: Asegúrate de que esta URL sea la correcta para tu servicio Cloud Run!
     // El YOUR_PROJECT_ID ha sido reemplazado por 858389184339.
-    // Y ajusta el endpoint '/api/huella-carbono' si es diferente.
-    const CLOUD_RUN_API_URL = 'https://footprint-service-858389184339.us-east1.run.app/api/huella-carbono'; 
+    // Y ajusta el endpoint '/api/footprint-energetico' si es diferente.
+    const CLOUD_RUN_API_URL = 'https://footprint-service-858389184339.us-east1.run.app/api/footprint-energetico'; 
 
     // URL de tu API 'footprint-service' cuando se ejecuta localmente en tu PC (para desarrollo en laptop)
     // Se asume el puerto LOCAL 3008.
-    const LOCAL_API_URL_LAPTOP = 'http://localhost:3008/api/huella-carbono';
+    const LOCAL_API_URL_LAPTOP = 'http://localhost:3008/api/footprint-energetico';
 
     // URL de tu API 'footprint-service' cuando se ejecuta localmente en tu PC (para pruebas desde móvil en la misma LAN)
     // ¡Asegúrate que esta IP sea la IP REAL de tu laptop en tu red Wi-Fi local!
     // Se asume el mismo puerto LOCAL 3008.
-    const LOCAL_API_URL_LAN = 'http://192.168.0.252:3008/api/huella-carbono'; 
+    const LOCAL_API_URL_LAN = 'http://192.168.0.252:3008/api/footprint-energetico'; 
     // --- Fin de Configuración de URLs de API ---
 
     let API_FOOTPRINT_FINAL_URL;
@@ -82,3 +84,4 @@ document.getElementById("calcular").addEventListener("click", async function (ev
         alert("Error al calcular huella de carbono: " + error.message);
     }
 });
+
