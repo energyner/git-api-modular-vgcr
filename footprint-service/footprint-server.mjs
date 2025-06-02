@@ -1,8 +1,8 @@
 // footprint-server.mjs
 import express from 'express';
 import cors from 'cors';
-// función de cálculo para la huella de carbono
-import { calcularHuellaCarbono } from './calculation/carbon-footprint.mjs'; // nombre del archivo y la función
+// Asumo que tienes una función de cálculo para la huella de carbono
+import { calcularHuellaCarbono } from './calculation/carbon-footprint.mjs'; // Nombre del archivo y la función
 import * as fs from 'fs';
 import * as path from 'path';
 import { fileURLToPath } from 'url';
@@ -13,7 +13,7 @@ const __dirname = path.dirname(__filename); // __dirname ahora es /usr/src/app d
 
 const app = express();
 // Cloud Run inyectará la variable de entorno PORT. Se recomienda usar 8080.
-const PORT = process.env.PORT || 8080; // Puerto local para desarrollo
+const PORT = process.env.PORT || 8080; 
 
 // Middlewares
 app.use(cors(  
@@ -28,18 +28,17 @@ app.use(express.json());
 
 // --- NUEVAS MEJORAS: Servir archivos estáticos del frontend ---
 // Configura Express para servir archivos estáticos desde la subcarpeta 'public'.
+// Comprobar  que  Dockerfile copie tu HTML, JS, CSS, etc. a esta carpeta
 // dentro del contenedor Docker.
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Ruta principal para servir el archivo HTML de la interfaz de usuario
+// Ruta principal para servir el archivo HTML de tu interfaz de usuario
 // Cuando alguien acceda a la URL base de tu servicio Cloud Run (ej. https://tu-servicio.run.app/)
-// se servirá tu archivo footprint.html.
+// se servirá el archivo del frontend footprint.html.
 app.get('/', (req, res) => {
-    // Servimos el archivo footprint.html que está dentro de la carpeta 'public'
-    res.sendFile(path.join(__dirname, 'public', 'footprint.html'));
+    // Serviendo el archivo footprint.html que está dentro de la carpeta 'public'
+    res.sendFile(path.join(__dirname, 'public', 'footprint.html'));
 });
-// --- FIN de NUEVAS MEJORAS ---
-
 
 // Endpoint GET informativo para la API
 app.get('/api/huella-carbono', (req, res) => {
@@ -53,7 +52,7 @@ app.get('/health', (req, res) => {
     let isCalculationFilePresent = false;
     let isCalculationFunctionWorking = false;
 
-    const filePath = path.join(__dirname, 'calculation', 'carbon-footprint.mjs'); // nombre del archivo de calculo
+    const filePath = path.join(__dirname, 'calculation', 'carbon-footprint.mjs'); // Nombre del archivo
     try {
         if (fs.existsSync(filePath)) {
             isCalculationFilePresent = true;
@@ -62,15 +61,15 @@ app.get('/health', (req, res) => {
         console.error('Error al verificar el archivo:', error);
     }
 
-    if (typeof calcularHuellaCarbono === 'function') { // nombre de la función
+    if (typeof calcularHuellaCarbono === 'function') { // Nombre del archivo
         try {
-            const testData = { /* datos de prueba para huella de carbono */ };
-            const testResult = calcularHuellaCarbono(testData); // Ajusta la función
-            if (typeof testResult === 'number' || typeof testResult === 'object') { // Puede devolver objeto
+            const testData = { state: "CA", elect: 100, gas: 10, water: 5, lpg: 1, gn: 1, fly: 0, cogs: 0, person: 1 }; // Datos de prueba válidos
+            const testResult = calcularHuellaCarbono(testData); // Llama a la función de cálculo
+            if (typeof testResult === 'object' && !testResult.error) { // Verifica que no haya error en el resultado
                 isCalculationFunctionWorking = true;
             }
         } catch (error) {
-            console.error('Error al ejecutar calcularHuellaCarbono:', error);
+            console.error('Error al ejecutar calcularHuellaCarbono en health check:', error);
         }
     }
 
@@ -79,13 +78,32 @@ app.get('/health', (req, res) => {
     } else {
         let message = 'ERROR en health check:';
         if (!isCalculationFilePresent) message += ' Archivo de cálculo no encontrado.';
-        if (!isCalculationFunctionWorking) message += ' La función no se ejecuta correctamente.';
+        if (!isCalculationFunctionWorking) message += ' La función no se ejecuta correctamente o devuelve un error.';
         res.status(500).send(message);
     }
 });
 
 // POST para cálculos de huella de carbono
-app.post('/api/huella-carbono', calcularHuellaCarbono); // nombre de la función
+
+app.post('/api/huella-carbono', (req, res) => {
+    console.log('POST request received for /api/huella-carbono');
+    const { state, elect, gas, water, lpg, gn, fly, cogs, person } = req.body;
+    console.log('Data from request body:', req.body);
+
+    // Validar los datos de entrada aquí si es necesario, o directamente en la función de cálculo
+    
+    // Llamar a la función de cálculo
+    const result = calcularHuellaCarbono({ state, elect, gas, water, lpg, gn, fly, cogs, person });
+
+    // Enviar la respuesta al cliente
+    if (result.error) {
+        console.error('Error in calculation:', result.error);
+        res.status(400).json({ error: result.error }); // Errores de validación o lógica
+    } else {
+        console.log('Calculation successful. Sending result:', result);
+        res.status(200).json(result); // Enviar el resultado exitoso
+    }
+});
 
 // Iniciar servidor
 app.listen(PORT, '0.0.0.0', () => {
