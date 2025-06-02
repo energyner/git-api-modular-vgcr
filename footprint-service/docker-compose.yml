@@ -7,5 +7,5 @@ services:
       dockerfile: Dockerfile
     container_name: footprint-service
     ports:
-      - "3006:3006"
+      - "3008:3008"
     restart: unless-stopped
