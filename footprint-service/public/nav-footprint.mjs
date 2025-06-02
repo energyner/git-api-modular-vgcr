@@ -1,5 +1,3 @@
-// nav-footprint.mjs
-
 document.getElementById("calcular").addEventListener("click", async function (event) {
     event.preventDefault();
 
@@ -16,22 +14,44 @@ document.getElementById("calcular").addEventListener("click", async function (ev
 
     const data = { state, elect, gas, water, lpg, gn, fly, cogs, person };
 
-// 1. Detectar tipo de entorno y dispositivo
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    const isLocalDesktop = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    // --- Configuración de URLs de API para FOOTPRINT SERVICE ---
+    // URL de tu API 'footprint-service' desplegada en Google Cloud Run
+    // ¡IMPORTANTE: Asegúrate de que esta URL sea la correcta para tu servicio Cloud Run!
+    // El YOUR_PROJECT_ID ha sido reemplazado por 858389184339.
+    // Y ajusta el endpoint '/api/huella-carbono' si es diferente.
+    const CLOUD_RUN_API_URL = 'https://footprint-service-858389184339.us-east1.run.app/api/huella-carbono'; 
 
-    // 2. IP real de tu PC en red Wi-Fi local (ajústala si cambia)
-    const SERVER_PC_IP = 'http://192.168.0.252:3008'; // ← cámbiala por tu IP real
+    // URL de tu API 'footprint-service' cuando se ejecuta localmente en tu PC (para desarrollo en laptop)
+    // Se asume el puerto LOCAL 3008.
+    const LOCAL_API_URL_LAPTOP = 'http://localhost:3008/api/huella-carbono';
 
-    // 3. Construir URL final
-    const API_FOOTPRINT = isLocalDesktop
-        ? 'http://localhost:3008/api/huella-carbono'
-        : isMobile
-            ? `${SERVER_PC_IP}/api/huella-carbono`
-            : '/api/footprint'; // producción
+    // URL de tu API 'footprint-service' cuando se ejecuta localmente en tu PC (para pruebas desde móvil en la misma LAN)
+    // ¡Asegúrate que esta IP sea la IP REAL de tu laptop en tu red Wi-Fi local!
+    // Se asume el mismo puerto LOCAL 3008.
+    const LOCAL_API_URL_LAN = 'http://192.168.0.252:3008/api/huella-carbono'; 
+    // --- Fin de Configuración de URLs de API ---
+
+    let API_FOOTPRINT_FINAL_URL;
+
+    // Lógica para seleccionar la URL de la API basada en el entorno del navegador
+    const hostname = window.location.hostname;
+
+    if (hostname === 'localhost' || hostname === '127.0.0.1') {
+        // Entorno de desarrollo local en la misma laptop
+        API_FOOTPRINT_FINAL_URL = LOCAL_API_URL_LAPTOP;
+        console.log('Entorno detectado: Desarrollo local (laptop). URL API Footprint:', API_FOOTPRINT_FINAL_URL);
+    } else if (hostname.startsWith('192.168.') || hostname.startsWith('10.') || hostname.startsWith('172.')) {
+        // Entorno de desarrollo local, accedido por IP en la red de área local (LAN)
+        API_FOOTPRINT_FINAL_URL = LOCAL_API_URL_LAN;
+        console.log('Entorno detectado: Desarrollo local (LAN). URL API Footprint:', API_FOOTPRINT_FINAL_URL);
+    } else {
+        // Cualquier otro hostname (ej. *.run.app, o un dominio personalizado) se considera producción
+        API_FOOTPRINT_FINAL_URL = CLOUD_RUN_API_URL;
+        console.log('Entorno detectado: Producción (Cloud Run). URL API Footprint:', API_FOOTPRINT_FINAL_URL);
+    }
             
     try {
-        const response = await fetch(API_FOOTPRINT, {
+        const response = await fetch(API_FOOTPRINT_FINAL_URL, { // Usa la URL final construida
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
