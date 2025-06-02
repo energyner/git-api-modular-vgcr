@@ -21,7 +21,7 @@ document.getElementById("calcular").addEventListener("click", async function (ev
     // ¡IMPORTANTE: Asegúrate de que esta URL sea la correcta para tu servicio Cloud Run!
     // El YOUR_PROJECT_ID ha sido reemplazado por 858389184339.
     // Y ajusta el endpoint '/api/footprint-energetico' si es diferente.
-    const CLOUD_RUN_API_URL = 'https://footprint-service-858389184339.us-east1.run.app/api/footprint-energetico'; 
+    //const CLOUD_RUN_API_URL = 'https://footprint-service-858389184339.us-east1.run.app/api/footprint-energetico'; 
 
     // URL de tu API 'footprint-service' cuando se ejecuta localmente en tu PC (para desarrollo en laptop)
     // Se asume el puerto LOCAL 3008.
