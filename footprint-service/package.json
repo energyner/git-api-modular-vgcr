@@ -9,8 +9,14 @@
   },
   "keywords": [
     "microservicio",
-    "consumo",
-    "energia",
+    "electricidad",
+    "gas",
+    "water",
+    "lpg",
+    "gn",
+    "flyght",
+    "cogs",
+    "person",
     "nodejs"
   ],
   "author": "energyner",
